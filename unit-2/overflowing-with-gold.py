@@ -25,12 +25,15 @@ Explanation: Select index 4 and delete it: word becomes "argh" and each characte
 False
 Explanation: They must delete a character, so either the frequency of "h" is 1 and the frequency of "a" is 2, or vice versa. It is impossible to make all present letters have equal frequency.
 '''
+import heapq
 
 def can_make_balanced(code):
     '''
     idea: get the frequency of each of the characters. Then, see if there's more than one character that differs by one. If so, not balanced.
     '''
     freq = {}
+    #This block is O(n)
+    
     for char in code:
         if char not in freq:
             freq[char] = 1
@@ -40,7 +43,7 @@ def can_make_balanced(code):
     #Got the frequency, but... I don't know how to do the logic for the second part.
     #Wait, if we use a heap then we can extract the max value (the char with the highest freqeuncy), then we take the freq
     #table when that value is removed then return boolean if those are equal.
-    
+
     strikes = 0
     baseline = freq[code[0]]
     for char, num in freq.items():
