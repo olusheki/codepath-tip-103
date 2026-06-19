@@ -32,7 +32,7 @@ def find_balanced_subsequence(art_pieces):
     count = Counter(art_pieces)
 
     maxlen = 0
-    for val, freq in count.items():
+    for val, _ in count.items():
         if count[val + 1]:
             maxlen = max(maxlen, count[val] + count[val + 1])
     return maxlen
